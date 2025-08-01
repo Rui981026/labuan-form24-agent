@@ -32,6 +32,7 @@ st.title("Labuan Form 24 Auto-Filler")
 
 st.write("Fill in director details to generate a completed Form 24.")
 
+# form inputs
 with st.form("form24"):
     company_name = st.text_input("Labuan Company Name")
     client_name = st.text_input("Director's Name")
@@ -39,17 +40,18 @@ with st.form("form24"):
     passport_number = st.text_input("NRIC/Passport/Company No.")
     submitted = st.form_submit_button("Generate Form 24")
 
-    if submitted:
-        filled_file = fill_form24({
-            "company_name": company_name,
-            "client_name": client_name,
-            "client_address": client_address,
-            "passport_number": passport_number
-        })
-        with open(filled_file, "rb") as f:
-            st.download_button(
-                label="📄 Download Filled Form 24",
-                data=f,
-                file_name=filled_file,
-                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-            )
+# generate docx and provide download button
+if submitted:
+    filled_file = fill_form24({
+        "company_name": company_name,
+        "client_name": client_name,
+        "client_address": client_address,
+        "passport_number": passport_number
+    })
+    with open(filled_file, "rb") as f:
+        st.download_button(
+            label="📄 Download Filled Form 24",
+            data=f,
+            file_name=filled_file,
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        )
