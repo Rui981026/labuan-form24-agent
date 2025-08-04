@@ -28,7 +28,7 @@ def fill_form24(data, template_path='form_24_template.docx'):
     doc.save(output_path)
     return output_path
 
-st.title("Labuan Form 24 Auto-Filler")
+st.title("BBS Trust Ltd Form 24 Agent")
 
 st.write("Fill in director details to generate a completed Form 24.")
 
@@ -55,3 +55,4 @@ if submitted:
             file_name=filled_file,
             mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
         )
+
